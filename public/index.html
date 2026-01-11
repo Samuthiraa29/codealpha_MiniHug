@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniHug - Baby Products & Toys</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- LANDING PAGE (Login/Signup + Quotes) -->
+    <div id="landing-page">
+        <div class="center-container">
+            <div class="auth-box">
+                <h1>MiniHug</h1>
+                
+                <!-- Initial Selection View -->
+                <div id="auth-selection">
+                    <button class="main-btn" onclick="startAuth('login')">Login</button>
+                    <button class="main-btn" onclick="startAuth('signup')">Sign Up</button>
+                </div>
+
+                <!-- Auth Forms Container (Hidden initially) -->
+                <div id="auth-forms-container" style="display: none;">
+                    <div class="tabs">
+                        <button id="tab-login" class="tab-btn" onclick="showTab('login')">Login</button>
+                        <button id="tab-signup" class="tab-btn" onclick="showTab('signup')">Signup</button>
+                    </div>
+
+                    <form id="login-form" class="auth-form">
+                        <input type="email" id="login-email" placeholder="Email" required>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+
+                    <form id="signup-form" class="auth-form">
+                        <input type="text" id="signup-name" placeholder="Full Name" required>
+                        <input type="email" id="signup-email" placeholder="Email" required>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                    
+                    <button onclick="resetAuthSelection()" class="back-link">Back</button>
+                </div>
+            </div>
+
+            <!-- Features Section (Outside & Below Auth Box) -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Made with Love</h3>
+                    <p>Crafted with care for your little ones.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>100% Safe</h3>
+                    <p>Certified materials ensuring safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Eco Friendly</h3>
+                    <p>Sustainable choices for a better future.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP (Logged In View) -->
+    <div id="main-app" style="display: none;">
+        <header>
+            <div class="logo" onclick="showProducts()" style="cursor: pointer;">MiniHug</div>
+            <div class="header-right">
+                <div class="cart-icon" onclick="showCart()">
+                    🛒 <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Product View -->
+        <div id="product-view" class="container">
+            <div class="section-title">
+                <h2>Baby Products</h2>
+            </div>
+            <div id="products-list" class="grid-container"></div>
+
+            <div class="section-title">
+                <h2>Baby Toys</h2>
+            </div>
+            <div id="toys-list" class="grid-container"></div>
+        </div>
+
+        <!-- Product Detail View -->
+        <div id="product-detail-view" class="container" style="display: none;">
+            <button onclick="showProducts()" class="back-link" style="margin-bottom: 20px; cursor: pointer;">&larr; Back to Products</button>
+            <div class="detail-card">
+                <div class="detail-image">
+                    <img id="detail-img" src="" alt="Product Detail" onerror="this.onerror=null; this.src='https://placehold.co/300?text=No+Image'">
+                </div>
+                <div class="detail-info">
+                    <h2 id="detail-name"></h2>
+                    <p id="detail-desc"></p>
+                    <div class="product-meta">
+                        <p>✨ Premium Quality</p>
+                        <p>🚚 Fast Delivery</p>
+                        <p>🛡️ 1 Year Warranty</p>
+                    </div>
+                    <h3 id="detail-price"></h3>
+                    <button id="detail-add-btn" class="action-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart View -->
+        <div id="cart-view" class="container" style="display: none;">
+            <div class="section-title">
+                <h2>Your Cart</h2>
+            </div>
+            <div id="cart-items-list" class="cart-list-container"></div>
+            <div class="cart-summary-box">
+                <h3>Total: $<span id="cart-total">0.00</span></h3>
+                <button class="action-btn continue-btn" onclick="showProducts()">Continue Shopping</button>
+                <button class="action-btn" onclick="showPayment()">Proceed to Pay</button>
+            </div>
+        </div>
+
+        <!-- Payment View -->
+        <div id="payment-view" class="container" style="display: none;">
+             <div class="center-card">
+                <h2>Payment</h2>
+                <p>Scan the QR Code to complete your payment</p>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MiniHugPayment" alt="Payment QR Code">
+                </div>
+                <div>
+                    <button class="action-btn" onclick="confirmOrder()">Place Order</button>
+                </div>
+             </div>
+        </div>
+
+        <!-- Confirmation View -->
+        <div id="confirmation-view" class="container" style="display: none;">
+            <div class="center-card success-card">
+                <div class="success-icon">✓</div>
+                <h2>Order Confirmed!</h2>
+                <p>Thank you for shopping with MiniHug.</p>
+                <button class="action-btn" onclick="showProducts()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniHug - Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="MiniHug">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Back to Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container" style="max-width: 600px; text-align: center;">
+            <h2>Scan to Pay</h2>
+            <p>Please scan the QR code below to complete your purchase.</p>
+            
+            <div class="qr-container">
+                <!-- Fake QR Code -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MiniHugPayment" alt="Payment QR Code">
+            </div>
+
+            <form id="checkout-form" style="margin-top: 20px;">
+                <button type="submit" class="btn" style="width: 100%; cursor: pointer;">Place Order</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
